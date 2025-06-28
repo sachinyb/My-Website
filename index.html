@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">My Profile</div>
+    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav>
+      <ul class="sidebar-links">
+        <li><a href="#home"><i class="fas fa-home"></i><span class="link-text">Home</span></a></li>
+        <li><a href="#about"><i class="fas fa-user"></i><span class="link-text">About</span></a></li>
+        <li><a href="#projects"><i class="fas fa-briefcase"></i><span class="link-text">Projects</span></a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i><span class="link-text">Contact</span></a></li>
+        <li class="has-submenu">
+          <a href="#" class="submenu-toggle"><i class="fas fa-plus"></i> <span class="link-text">Create</span> <i class="fas fa-chevron-down submenu-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><i class="fas fa-folder-plus"></i> Folder</a></li>
+            <li><a href="#"><i class="fas fa-file-alt"></i> Document</a></li>
+            <li><a href="#"><i class="fas fa-project-diagram"></i> Project</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="main-content">
+    <section id="home" class="section home-section">
+      <div class="container">
+        <h1>Hello, I'm Sachin</h1>
+        <p>Welcome to my personal portfolio website!</p>
+      </div>
+    </section>
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2>About Me</h2>
+                 <p>
+    Hello! My name is <strong>Sachin</strong>. I am a Computer Science student with a passion for technology and innovation. 
+    Currently, I am pursuing a Full Stack Web Development course to enhance my skills in building modern, responsive, and user-friendly websites and applications.
+  </p>
+  <p>
+    I enjoy learning new technologies, solving problems, and turning ideas into real-world solutions. My goal is to become a proficient full stack developer and contribute to impactful tech projects.
+  </p>
+      </div>
+    </section>
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>LIBRARY MANAGEMENT SYSTEM</h3>
+            <p>Library management System using java, JDBC &MySQL for book and user management.Built in java based
+System to manage books, users and transaction in library.Java project to manage library operations
+:issues/return, members, and inventory.
+</p>
+
+          </div>
+          <div class="project-card">
+            <h3>Employee_management_project</h3>
+            <p>Java app to manage employee records, salary and persanal details with MySQL.Built an employee Management
+system using java,JDBCand MySQL backend.Employee details and salary trackerusing java and database
+integration. Designed a java-based system to store employee information and calculate salary.
+</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div id="form-message"></div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Sachin. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 

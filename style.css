@@ -1,0 +1,445 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #181f2a;
+  color: #f1f5fa;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+/* Sidebar (Navbar) with background image and overlay */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh;
+  background: #181f2a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+  transition: width 0.3s cubic-bezier(.4,2,.6,1), left 0.3s;
+  overflow-x: hidden;
+}
+.sidebar.collapsed {
+  width: 64px;
+}
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(24, 31, 42, 0.85);
+  z-index: 0;
+}
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+.sidebar-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 2rem 0;
+  color: #4f8cff;
+  letter-spacing: 1px;
+  transition: opacity 0.3s;
+}
+.sidebar.collapsed .sidebar-logo {
+  opacity: 0;
+  pointer-events: none;
+}
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+  align-self: flex-end;
+  margin-right: 1.2rem;
+  z-index: 2;
+}
+.sidebar-toggle-btn:focus {
+  outline: 2px solid #4f8cff;
+}
+.sidebar-links {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-links li {
+  width: 100%;
+  position: relative;
+}
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+  border-left: 4px solid transparent;
+  position: relative;
+  z-index: 1;
+}
+.sidebar-links a:hover, .sidebar-links a.active {
+  background: #232c3b;
+  color: #4f8cff;
+  border-left: 4px solid #4f8cff;
+  padding-left: 2.5rem;
+}
+.sidebar.collapsed .sidebar-links a {
+  justify-content: center;
+  padding: 1.1rem 0.5rem;
+}
+.sidebar-links i {
+  font-size: 1.3rem;
+  min-width: 24px;
+  text-align: center;
+}
+.link-text {
+  transition: opacity 0.2s, width 0.2s;
+  white-space: nowrap;
+}
+.sidebar.collapsed .link-text {
+  opacity: 0;
+  width: 0;
+  pointer-events: none;
+}
+/* Submenu styles */
+.has-submenu > .submenu-toggle {
+  cursor: pointer;
+  position: relative;
+}
+.submenu {
+  display: none;
+  flex-direction: column;
+  background: #232c3b;
+  border-radius: 0 0 8px 8px;
+  margin-left: 2.5rem;
+  margin-top: -0.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(.4,2,.6,1);
+}
+.has-submenu.open > .submenu {
+  display: flex;
+  animation: submenuOpen 0.3s;
+}
+@keyframes submenuOpen {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.submenu a {
+  padding: 0.9rem 2rem;
+  color: #fff;
+  font-size: 1rem;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, color 0.2s, border-left 0.2s;
+}
+.submenu a:hover {
+  background: #293447;
+  color: #4f8cff;
+  border-left: 4px solid #4f8cff;
+}
+.submenu-arrow {
+  margin-left: auto;
+  transition: transform 0.3s;
+}
+.has-submenu.open .submenu-arrow {
+  transform: rotate(180deg);
+}
+/* Main content */
+.main-content {
+  background: rgba(255,255,255,0.92);
+  min-height: 100vh;
+  margin-left: 230px;
+  transition: margin-left 0.3s;
+}
+.sidebar.collapsed ~ .main-content {
+  margin-left: 64px;
+}
+.section {
+  min-height: 60vh;
+  padding: 60px 0 40px 0;
+}
+/* Home section with its own background image and overlay */
+.home-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('assest/tim-mossholder-07uiqD9LS6U-unsplash.jpg') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+}
+.home-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(20, 30, 40, 0.65);
+  z-index: 1;
+}
+.home-section .container {
+  position: relative;
+  z-index: 2;
+}
+.home-section h1 {
+  font-size: 3.2rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.home-section p {
+  font-size: 1.5rem;
+  color: #f1f5fa;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+/* About section with its own background image and overlay */
+.about-section {
+  background: url('assest/ales-nesetril-Im7lZjxeLhg-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 60vh;
+  text-align: center;
+  position: relative;
+}
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(214, 206, 206, 0.85);
+  z-index: 1;
+}
+.about-section .container {
+  position: relative;
+  z-index: 2;
+}
+.about-section h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #181f2a;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.18);
+}
+.about-section p {
+  font-size: 1.5rem;
+  color: #222;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.12);
+}
+/* Projects section with its own background image and overlay */
+.projects-section {
+  background: url('assest/lauren-mancke-aOC7TSLb1o8-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(8, 33, 63, 0.92);
+  z-index: 1;
+}
+.projects-section .container {
+  position: relative;
+  z-index: 2;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.project-card h3 {
+  font-size: 1.4rem;
+  color: #0077ff;
+  margin-bottom: 0.7rem;
+}
+.project-card p {
+  font-size: 1.1rem;
+  color: #333;
+}
+.project-card:hover {
+  transform: translateY(-7px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(0,123,255,0.13);
+}
+/* Contact section with its own background image and overlay */
+.contact-section {
+  background: url('assest/shubham-dhage-MIvbZPmY9Ds-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(184, 184, 189, 0.92);
+  z-index: 1;
+}
+.contact-section .container {
+  position: relative;
+  z-index: 2;
+}
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto 0 auto;
+}
+#contact-form input, #contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: none;
+}
+#contact-form button {
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#contact-form button:hover {
+  background: #005fcc;
+}
+#form-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+@media (max-width: 900px) {
+  .container {
+    width: 98%;
+    padding: 30px 0;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .sidebar {
+    width: 100vw;
+    height: 64px;
+    left: 0;
+    bottom: 0;
+    top: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+    transition: height 0.3s, width 0.3s;
+  }
+  .sidebar-logo, .sidebar-toggle-btn {
+    display: none;
+  }
+  .sidebar-links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .sidebar-links li {
+    width: auto;
+  }
+  .sidebar-links a {
+    padding: 0.5rem 0.7rem;
+    font-size: 1.1rem;
+    border-left: none;
+    border-bottom: 4px solid transparent;
+    justify-content: center;
+  }
+  .sidebar-links a:hover, .sidebar-links a.active {
+    background: #232c3b;
+    color: #4f8cff;
+    border-bottom: 4px solid #4f8cff;
+    border-left: none;
+    padding-left: 0.7rem;
+  }
+  .link-text {
+    display: none;
+  }
+  .has-submenu > .submenu-toggle .submenu-arrow {
+    display: none;
+  }
+  .submenu {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100vw;
+    border-radius: 0 0 8px 8px;
+    z-index: 3000;
+  }
+  .main-content {
+    margin-left: 0;
+    margin-bottom: 64px;
+  }
+  .sidebar.collapsed ~ .main-content {
+    margin-left: 0;
+  }
+  .home-section h1 {
+    font-size: 2.1rem;
+  }
+  .about-section h2 {
+    font-size: 1.7rem;
+  }
+  .about-section p {
+    font-size: 1.1rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Remove old nav/header styles */
+header, .navbar, .logo, .nav-links, .menu-toggle { display: none !important; }
+/* Keep previous section, grid, form, and footer styles as is */ 
